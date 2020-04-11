@@ -31,20 +31,37 @@ io.on("connection", function (socket) {
             name: `dawg_${socket.id}`,
         };
     });
+
+    const stomps = 5;
     socket.on("movement", function (data) {
         var player = players[socket.id] || {};
+
+        var deltaX = 0;
+        var deltaY = 0;
         if (data.left) {
-            player.x -= 5;
+            deltaX -= 1;
         }
         if (data.up) {
-            player.y -= 5;
+            deltaY -= 1;
         }
         if (data.right) {
-            player.x += 5;
+            deltaX += 1;
         }
         if (data.down) {
-            player.y += 5;
+            deltaY += 1;
         }
+
+        // NormalizeVec
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        if (distance != 0) {
+            deltaX = deltaX / distance;
+            deltaY = deltaY / distance;
+        }
+
+        // ScaleVec
+        player.x += deltaX * stomps;
+        player.y += deltaY * stomps;
     });
 });
 

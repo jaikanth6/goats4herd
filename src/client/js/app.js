@@ -41,9 +41,11 @@ document.addEventListener("keyup", function (event) {
 });
 
 socket.emit("new player");
+
+var inputIntervalInMilliseconds = 15;
 setInterval(function () {
     socket.emit("movement", movement);
-}, 1000 / 60);
+}, inputIntervalInMilliseconds);
 
 var canvasElement = document.getElementById("myCanvas");
 canvasElement.width = 800;
@@ -52,7 +54,7 @@ var context = canvasElement.getContext("2d");
 
 socket.on("game-state", function (players) {
     // player
-    context.clearRect(0, 0, 800, 600);
+    context.clearRect(0, 0, 800, 800);
     for (var id in players) {
         var player = players[id];
         context.fillStyle = player.color;
