@@ -12,7 +12,7 @@ io.on("connection", function (socket) {
 
     socket.on("disconnect", function () {
         delete players[socket.id];
-        socket.emit('userDisconnect', socket.id);
+        socket.emit("userDisconnect", socket.id);
         console.log("A user disconnected");
     });
 });
@@ -22,17 +22,16 @@ http.listen(port, function () {
     console.log("Listening on port: " + port);
 });
 
-
-io.on('connection', function (socket) {
-    socket.on('new player', function () {
+io.on("connection", function (socket) {
+    socket.on("new player", function () {
         players[socket.id] = {
             x: 300,
             y: 300,
-            color: 'hsl(' + 360 * Math.random() + ', 50%, 50%)',
-            name: `dawg_${socket.id}`
+            color: "hsl(" + 360 * Math.random() + ", 50%, 50%)",
+            name: `dawg_${socket.id}`,
         };
     });
-    socket.on('movement', function (data) {
+    socket.on("movement", function (data) {
         var player = players[socket.id] || {};
         if (data.left) {
             player.x -= 5;
@@ -49,7 +48,6 @@ io.on('connection', function (socket) {
     });
 });
 
-
 setInterval(function () {
-    io.sockets.emit('game-state', players);
+    io.sockets.emit("game-state", players);
 }, 1000 / 60);
