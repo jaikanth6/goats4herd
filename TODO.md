@@ -6,7 +6,7 @@ Gameplay
 -   Gamer see that the game starts only when there are two or more players
 -   Gamers see that the dogs start at a predictable location
 -   Gamers see that the goats don't vibrate when close to each other
--   Gamer should see scores
+-   Gamer should see scoress
 
 Infrastructure
 
