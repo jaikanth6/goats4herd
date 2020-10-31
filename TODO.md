@@ -1,4 +1,4 @@
-# TODOs
+# TODO
 
 Gameplay
 
@@ -7,6 +7,7 @@ Gameplay
 -   Gamers see that the dogs start at a predictable location
 -   Gamers see that the goats don't vibrate when close to each other
 -   Gamer should see scores
+-   Add lobby
 
 Infrastructure
 
